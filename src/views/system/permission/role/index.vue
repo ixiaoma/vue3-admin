@@ -3,7 +3,6 @@
     <DynamicTable
       ref="dynamicTableRef"
       row-key="id"
-      header-title="角色管理"
       :data-request="getRoleListByPage"
       :columns="columns"
       bordered

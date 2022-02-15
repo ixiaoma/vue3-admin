@@ -20,12 +20,17 @@
       <!--      页头end-->
       <!--      内容区域start-->
       <a-layout-content class="layout-content">
-        <tabs-view />
+        <router-view v-slot="{ Component, route }" class="basic-page">
+          <template v-if="Component">
+            <transition name="fade-transform" mode="out-in" appear>
+              <keep-alive :include="keepAliveComponents">
+                <component :is="Component" :key="route.fullPath" />
+              </keep-alive>
+            </transition>
+          </template>
+        </router-view>
       </a-layout-content>
       <!--      内容区域end-->
-      <!--      页脚start-->
-      <page-footer />
-      <!--      页脚end-->
     </a-layout>
   </a-layout>
 </template>
@@ -34,19 +39,15 @@
   import { defineComponent, ref, computed } from 'vue';
   import { Layout } from 'ant-design-vue';
   import Logo from './logo/index.vue';
-  import { TabsView } from './tabs';
   import AsideMenu from './menu/menu.vue';
   import PageHeader from './header/index.vue';
-  import PageFooter from './footer';
-
+  import { useKeepAliveStore } from '@/store/modules/keepAlive';
   export default defineComponent({
     name: 'LayoutComp',
     components: {
-      TabsView,
       PageHeader,
       AsideMenu,
       Logo,
-      PageFooter,
       [Layout.name]: Layout,
       [Layout.Content.name]: Layout.Content,
       [Layout.Sider.name]: Layout.Sider,
@@ -55,10 +56,13 @@
       const collapsed = ref<boolean>(false);
       // 自定义侧边栏菜单收缩和展开时的宽度
       const asiderWidth = computed(() => (collapsed.value ? 80 : 220));
-
+      const keepAliveStore = useKeepAliveStore();
+      // 缓存的路由组件列表
+      const keepAliveComponents = computed(() => keepAliveStore.list);
       return {
         collapsed,
         asiderWidth,
+        keepAliveComponents,
       };
     },
   });
@@ -75,7 +79,13 @@
     }
 
     .layout-content {
-      flex: none;
+      height: calc(100vh - 64px);
+      padding: 20px;
+      overflow-y: scroll;
+      .basic-page {
+        padding: 20px;
+        background-color: #fff;
+      }
     }
   }
 </style>

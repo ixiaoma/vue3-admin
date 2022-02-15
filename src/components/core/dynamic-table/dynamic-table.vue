@@ -1,72 +1,44 @@
 <template>
-  <div>
-    <QueryForm
-      v-if="search"
-      ref="queryFormRef"
-      :columns="columns"
-      :formProps="formProps"
-      @toggle-advanced="(e) => $emit('toggle-advanced', e)"
-      @query="queryTable"
-    />
-    <div class="bg-white">
-      <ToolBar
-        v-if="showToolBar"
-        :title="headerTitle"
-        :titleTooltip="titleTooltip"
-        :showTableSetting="showTableSetting"
-      >
-        <template #headerTitle v-if="$slots.headerTitle">
-          <slot name="headerTitle"></slot>
-        </template>
-        <span v-if="exportFileName" class="ml-6px" @click="exportData2Excel">
-          <slot name="export-button">
-            <a-button type="primary">导出</a-button>
-          </slot>
-        </span>
-        <template #toolbar v-if="$slots.toolbar">
-          <Space><slot name="toolbar"></slot></Space>
-        </template>
-      </ToolBar>
-      <Table
-        ref="tableRef"
-        v-bind="getBindValues"
-        :dataSource="tableData"
-        @change="handleTableChange"
-      >
-        <template
-          v-for="slotName in defaultSlots.filter((name) => Reflect.has($slots, name))"
-          #[slotName]="slotData"
-          :key="slotName"
-        >
-          <slot :name="slotName" v-bind="slotData"></slot>
-        </template>
-
-        <!-- 个性化单元格 start -->
-        <template
-          v-for="slotName in ['bodyCell', 'headerCell']"
-          #[slotName]="slotData"
-          :key="slotName"
-        >
-          <slot :name="slotName" v-bind="slotData"></slot>
-          <!-- 表格行操作start -->
-          <template v-if="slotName === 'bodyCell' && getColumnKey(slotData.column) === '$action'">
-            <TableAction :actions="slotData.column.actions(slotData)" />
-          </template>
-          <!-- 表格行操作end -->
-          <template
-            v-for="slotItem in getBindValues.columns?.filter((item) => item[slotName])"
-            :key="getColumnKey(slotItem)"
-          >
-            <component
-              :is="slotItem?.[slotName]?.(slotData)"
-              v-if="getColumnKey(slotData.column) === getColumnKey(slotItem)"
-            />
-          </template>
-        </template>
-        <!-- 个性化单元格 end -->
-      </Table>
-    </div>
+  <QueryForm
+    v-if="search"
+    ref="queryFormRef"
+    :columns="columns"
+    :formProps="formProps"
+    @toggle-advanced="(e) => $emit('toggle-advanced', e)"
+    @query="queryTable"
+  />
+  <div v-if="showToolBar" class="tool-bar">
+    <Space><slot name="toolbar"></slot></Space>
   </div>
+  <Table ref="tableRef" v-bind="getBindValues" :dataSource="tableData" @change="handleTableChange">
+    <template
+      v-for="slotName in defaultSlots.filter((name) => Reflect.has($slots, name))"
+      #[slotName]="slotData"
+      :key="slotName"
+    >
+      <slot :name="slotName" v-bind="slotData"></slot>
+    </template>
+
+    <!-- 个性化单元格 start -->
+    <template v-for="slotName in ['bodyCell', 'headerCell']" #[slotName]="slotData" :key="slotName">
+      <slot :name="slotName" v-bind="slotData"></slot>
+      <!-- 表格行操作start -->
+      <template v-if="slotName === 'bodyCell' && getColumnKey(slotData.column) === '$action'">
+        <TableAction :actions="slotData.column.actions(slotData)" />
+      </template>
+      <!-- 表格行操作end -->
+      <template
+        v-for="slotItem in getBindValues.columns?.filter((item) => item[slotName])"
+        :key="getColumnKey(slotItem)"
+      >
+        <component
+          :is="slotItem?.[slotName]?.(slotData)"
+          v-if="getColumnKey(slotData.column) === getColumnKey(slotItem)"
+        />
+      </template>
+    </template>
+    <!-- 个性化单元格 end -->
+  </Table>
 </template>
 
 <script lang="tsx">
@@ -309,6 +281,16 @@
 </script>
 
 <style lang="less" scoped>
+  .tool-bar {
+    padding: 10px 0;
+    :deep(.ant-btn) {
+      background: #fff;
+      color: @primary-color;
+      border-radius: 4px;
+      border: 1px solid @primary-color;
+      font-size: 14px;
+    }
+  }
   :deep(.ant-table-wrapper) {
     padding: 0 6px 6px 6px;
     .ant-table {
@@ -328,5 +310,16 @@
 
   .actions > * {
     margin-right: 10px;
+  }
+  :deep(.ant-table-cell) {
+    font-size: 12px;
+    height: 40px;
+    color: #333;
+  }
+  :deep(.ant-table-thead) {
+    .ant-table-cell {
+      font-weight: 500;
+      background-color: #f4f7fd;
+    }
   }
 </style>

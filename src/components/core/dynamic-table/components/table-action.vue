@@ -5,7 +5,7 @@
       :is="actionItem.popConfirm ? Popconfirm : 'span'"
       v-bind="actionItem.popConfirm"
     >
-      <a-button type="link" v-bind="actionItem">{{ actionItem.label }}</a-button>
+      <a-button type="link" class="action-btn" v-bind="actionItem">{{ actionItem.label }}</a-button>
     </component>
   </template>
 </template>
@@ -53,3 +53,10 @@
     });
   });
 </script>
+<style lang="less" scoped>
+  .action-btn {
+    font-size: 12px;
+    padding: 0 15px;
+    height: fit-content;
+  }
+</style>

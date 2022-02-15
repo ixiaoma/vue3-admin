@@ -1,8 +1,8 @@
 <template>
   <Tooltip :title="getTitle" placement="bottom" :mouseEnterDelay="0.5">
     <span @click="toggle">
-      <FullscreenOutlined v-if="!isFullscreen" />
-      <FullscreenExitOutlined v-else />
+      <FullscreenOutlined v-if="!isFullscreen" :style="{ fontSize: '20px' }" />
+      <FullscreenExitOutlined v-else :style="{ fontSize: '20px' }" />
     </span>
   </Tooltip>
 </template>

@@ -48,15 +48,10 @@ module.exports = defineConfig({
           noIeCompat: true,
           modifyVars: {
             '@header-height': '64px',
-            '@footer-height': '70px',
+            '@primary-color': '#409eff',
           },
         },
       },
-      // sass: {
-      //   additionalData: `
-      //   @use 'sass:math';
-      //   @import "@/styles/global.scss";`
-      // }
     },
   },
   chainWebpack: (config) => {

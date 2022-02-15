@@ -2,19 +2,21 @@
   <div class="table-search">
     <schema-form ref="dynamicFormRef" :form-schema="formSchema">
       <template #operate-button>
+        <template v-if="formItemSchemas.length > 0 && formItemSchemas.length > defaultShowItems">
+          <a @click="toggleAdvanced" class="open-btn">
+            {{ advanced ? $t('component.form.putAway') : $t('component.form.unfold') }}
+            <CaretDownOutlined class="collapse-icon" />
+          </a>
+        </template>
         <span class="search-submitButtons" :style="{ float: 'right', overflow: 'hidden' }">
           <span>
-            <a-button type="default" style="margin-right: 10px" @click="reset">
+            <a-button type="primary" style="margin-right: 10px" @click="query">
+              {{ $t('common.queryText') }}
+            </a-button>
+            <a-button type="default" @click="reset" class="reset-btn">
               {{ $t('common.resetText') }}
             </a-button>
-            <a-button type="primary" @click="query"> {{ $t('common.queryText') }} </a-button>
           </span>
-          <template v-if="formItemSchemas.length > 0 && formItemSchemas.length > defaultShowItems">
-            <a style="margin-left: 8px" @click="toggleAdvanced">
-              {{ advanced ? $t('component.form.putAway') : $t('component.form.unfold') }}
-              <DownOutlined class="collapse-icon" />
-            </a>
-          </template>
         </span>
       </template>
     </schema-form>
@@ -23,14 +25,14 @@
 
 <script lang="ts">
   import { defineComponent, reactive, toRefs, computed, ref, nextTick } from 'vue';
-  import { DownOutlined } from '@ant-design/icons-vue';
+  import { CaretDownOutlined } from '@ant-design/icons-vue';
   import type { TableColumn } from '../../typing';
   import SchemaForm from '@/components/core/schema-form/schema-form.vue';
   import type { FormItemSchema, FormProps } from '@/components/core/schema-form/types/form';
 
   export default defineComponent({
     name: 'QueryForm',
-    components: { DownOutlined, SchemaForm },
+    components: { CaretDownOutlined, SchemaForm },
     props: {
       /** 默认显示个数 */
       defaultShowItems: {
@@ -144,14 +146,26 @@
 
 <style lang="less" scoped>
   .table-search {
-    margin-bottom: 16px;
-    padding: 24px 24px 0;
-    background: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+  .reset-btn {
+    background-color: #eaeaea;
+  }
+  .open-btn {
+    color: @primary-color;
+    display: inline-block;
+    margin-top: 8px;
   }
   .search-submitButtons {
     display: block;
     margin-bottom: 24px;
     white-space: nowrap;
+    .ant-btn {
+      border-radius: 4px;
+    }
+    .ant-btn-primary {
+      background-color: @primary-color;
+    }
   }
 
   :deep(.ant-row) {
@@ -160,8 +174,10 @@
 
   :deep(.ant-form-item) {
     margin-right: 0;
+    margin-bottom: 18px;
     &.operate-button {
       margin-bottom: 0;
+      text-align: center;
     }
   }
 

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "npm run serve",
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
     "build:test": "vue-cli-service build --mode test",
     "build:preview": "npm run build && npx serve -s dist",
