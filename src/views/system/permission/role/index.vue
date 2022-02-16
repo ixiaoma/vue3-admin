@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <DynamicTable
+  <BaseContainer>
+    <SearchTable
       ref="dynamicTableRef"
       row-key="id"
       :data-request="getRoleListByPage"
@@ -13,8 +13,8 @@
           新增
         </a-button>
       </template>
-    </DynamicTable>
-  </div>
+    </SearchTable>
+  </BaseContainer>
 </template>
 
 <script lang="ts">
@@ -35,7 +35,6 @@
   } from '@/api/system/role';
   import { getDeptList } from '@/api/system/dept';
   import { getMenuList } from '@/api/system/menu';
-  import { DynamicTable } from '@/components/core/dynamic-table';
   import { useFormModal } from '@/hooks/useModal/useFormModal';
   import { baseColumns, type TableListItem, type TableColumnItem } from './columns';
   import { roleSchemas } from './formSchemas';

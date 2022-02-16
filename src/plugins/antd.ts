@@ -1,8 +1,7 @@
 import type { App } from 'vue';
 
-import { AButton } from '@/components/basic/button/index';
-
 import {
+  Button,
   Modal,
   Table,
   Menu,
@@ -15,15 +14,21 @@ import {
   Row,
   Select,
   DatePicker,
+  Tabs,
+  Tooltip,
+  Tag,
+  Popover,
+  Dropdown,
+  Space,
+  Tree,
 } from 'ant-design-vue';
 
 import 'ant-design-vue/dist/antd.css';
 import 'dayjs/locale/zh-cn';
 
 export function setupAntd(app: App<Element>) {
-  app.component('AButton', AButton);
-
   app
+    .use(Button)
     .use(Form)
     .use(Input)
     .use(Modal)
@@ -35,5 +40,12 @@ export function setupAntd(app: App<Element>) {
     .use(Col)
     .use(Row)
     .use(Select)
+    .use(Tabs)
+    .use(Tooltip)
+    .use(Tag)
+    .use(Popover)
+    .use(Dropdown)
+    .use(Space)
+    .use(Tree)
     .use(DatePicker);
 }

@@ -28,7 +28,7 @@
 <script lang="ts" setup>
   import { ref, computed, watch } from 'vue';
   import { RightOutlined } from '@ant-design/icons-vue';
-  import { Checkbox } from 'ant-design-vue';
+
   import { updateNodeCheckStatus, CascaderOptionType, Key } from './utils';
 
   const props = defineProps({

@@ -16,7 +16,6 @@
   </Popover>
 </template>
 <script lang="ts" setup>
-  import { Form, Input, Popover, Tag } from 'ant-design-vue';
   import { watch, computed, ref } from 'vue';
   import { formarPermsToCascader } from '@/core/permission';
   import NodePanel from './node-panel.vue';

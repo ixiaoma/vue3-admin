@@ -2,6 +2,9 @@ import { App } from 'vue';
 
 import { SvgIcon } from '@/components/basic/svg-icon';
 import { IconFont } from '@/components/basic/iconfont';
+import { BaseContainer } from '@/components/basic/page-container';
+import { TopBar } from '@/components/basic/top-bar';
+import { DynamicTable } from '@/components/core/dynamic-table';
 
 /**
  * 全局注册自定义组件
@@ -10,4 +13,7 @@ import { IconFont } from '@/components/basic/iconfont';
 export function setupCustomComponents(app: App) {
   app.component(SvgIcon.name, SvgIcon);
   app.component(IconFont.name, IconFont);
+  app.component('BaseContainer', BaseContainer);
+  app.component('TopBar', TopBar);
+  app.component('SearchTable', DynamicTable);
 }

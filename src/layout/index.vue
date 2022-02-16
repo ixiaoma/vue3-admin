@@ -20,13 +20,13 @@
       <!--      页头end-->
       <!--      内容区域start-->
       <a-layout-content class="layout-content">
-        <router-view v-slot="{ Component, route }" class="basic-page">
+        <router-view v-slot="{ Component, route }">
           <template v-if="Component">
-            <transition name="fade-transform" mode="out-in" appear>
-              <keep-alive :include="keepAliveComponents">
-                <component :is="Component" :key="route.fullPath" />
-              </keep-alive>
-            </transition>
+            <!-- <transition name="fade-transform" mode="out-in" appear> -->
+            <keep-alive :include="keepAliveComponents">
+              <component :is="Component" :key="route.fullPath" />
+            </keep-alive>
+            <!-- </transition> -->
           </template>
         </router-view>
       </a-layout-content>
@@ -77,15 +77,9 @@
     .ant-layout {
       overflow: hidden;
     }
-
     .layout-content {
       height: calc(100vh - 64px);
-      padding: 20px;
       overflow-y: scroll;
-      .basic-page {
-        padding: 20px;
-        background-color: #fff;
-      }
     }
   }
 </style>

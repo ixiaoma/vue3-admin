@@ -13,7 +13,6 @@
 </template>
 <script lang="ts" setup>
   import { ref, watchEffect, unref, computed } from 'vue';
-  import { Dropdown, Menu } from 'ant-design-vue';
   import { useLocale } from '@/locales/useLocale';
   import { type LocaleType, localeList } from '@/locales/config';
   import { SvgIcon } from '@/components/basic/svg-icon';

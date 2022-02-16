@@ -29,16 +29,6 @@ const routes: Array<RouteRecordRaw> = [
           ),
       },
       {
-        path: 'button',
-        name: `${moduleName}-button`,
-        meta: {
-          title: t('routes.demo.button'),
-          icon: 'icon-zhuomian',
-          keepAlive: true,
-        },
-        component: () => import(/* webpackChunkName: "demos-button" */ '@/views/demos/button.vue'),
-      },
-      {
         path: 'form',
         name: `${moduleName}-form`,
         meta: {
@@ -97,47 +87,6 @@ const routes: Array<RouteRecordRaw> = [
             component: () =>
               import(
                 /* webpackChunkName: "search-table" */ '@/views/demos/tables/search-table/index.vue'
-              ),
-          },
-          {
-            path: 'wzry',
-            name: `${moduleName}-table-wzry`,
-            meta: {
-              title: t('routes.demo.table.wzry'),
-              icon: 'icon-zhuomian',
-              keepAlive: false,
-            },
-            component: () =>
-              import(
-                /* webpackChunkName: "wzry-table" */ '@/views/demos/tables/wzry-table/index.vue'
-              ),
-          },
-          {
-            path: 'lol',
-            name: `${moduleName}-table-lol`,
-            meta: {
-              title: t('routes.demo.table.lol'),
-              icon: 'icon-zhuomian',
-              keepAlive: true,
-            },
-            component: () =>
-              import(
-                /* webpackChunkName: "lol-table" */ '@/views/demos/tables/lol-table/index.vue'
-              ),
-          },
-          {
-            path: 'lol/:id',
-            name: `${moduleName}-table-lol-info`,
-            meta: {
-              title: '英雄详情',
-              icon: 'icon-zhuomian',
-              hideInMenu: true,
-              keepAlive: true,
-              activeMenu: `${moduleName}-table-lol`,
-            },
-            component: () =>
-              import(
-                /* webpackChunkName: "lol-info-table" */ '@/views/demos/tables/lol-table/heroInfo.vue'
               ),
           },
         ],

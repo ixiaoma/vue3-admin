@@ -150,6 +150,7 @@
   }
   .reset-btn {
     background-color: #eaeaea;
+    border-color: #eaeaea;
   }
   .open-btn {
     color: @primary-color;

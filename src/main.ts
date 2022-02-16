@@ -11,7 +11,6 @@ import {
   setupGlobalMethods,
   setupCustomComponents,
 } from '@/plugins';
-
 if (process.env.NODE_ENV === 'production') {
   const { mockXHR } = require('./mock');
   mockXHR();
@@ -31,7 +30,6 @@ function setupPlugins() {
   // 注册全局方法，如：app.config.globalProperties.$message = message
   setupGlobalMethods(app);
 }
-
 async function setupApp() {
   // 挂载vuex状态管理
   setupStore(app);

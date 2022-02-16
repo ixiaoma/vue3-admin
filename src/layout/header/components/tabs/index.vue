@@ -37,7 +37,6 @@
   //   ColumnWidthOutlined,
   //   MinusOutlined,
   // } from '@ant-design/icons-vue';
-  import { Dropdown, Tabs, message } from 'ant-design-vue';
   // import { REDIRECT_NAME } from '@/router/constant';
   import { TitleI18n } from '@/components/basic/title-i18n';
 
@@ -181,7 +180,7 @@
         background-color: white;
         user-select: none;
         &::before {
-          bottom: -1px;
+          display: none;
         }
       }
       .ant-tabs-tab {

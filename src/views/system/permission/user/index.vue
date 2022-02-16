@@ -1,87 +1,81 @@
 <template>
-  <SplitPanel>
-    <template #left-content>
-      <div class="flex justify-between">
-        <div>组织架构</div>
-        <Space>
-          <Tooltip v-if="$auth('sys.dept.add')" placement="top">
-            <template #title>新增部门 </template>
-            <PlusOutlined @click="openDeptModal({})" />
-          </Tooltip>
-          <Tooltip placement="top">
-            <template #title>刷新 </template>
-            <SyncOutlined :spin="deptListLoading" @click="fetchDeptList" />
-          </Tooltip>
-        </Space>
-      </div>
-      <Tree
-        v-model:expandedKeys="state.expandedKeys"
-        autoExpandParent
-        :tree-data="state.deptTree"
-        @select="onTreeSelect"
-      >
-        <template #title="{ key, title, formData }">
-          <Dropdown :trigger="['contextmenu']">
-            <span>{{ title }}</span>
-            <template #overlay>
-              <Menu>
-                <Menu.Item
-                  key="1"
-                  :disabled="!$auth('sys.dept.update')"
-                  @click="openDeptModal(formData)"
-                >
-                  编辑 <EditOutlined />
-                </Menu.Item>
-                <Menu.Item key="2" :disabled="!$auth('sys.dept.delete')" @click="delDept(key)">
-                  删除 <DeleteOutlined />
-                </Menu.Item>
-              </Menu>
-            </template>
-          </Dropdown>
-        </template>
-      </Tree>
-    </template>
-    <template #right-content>
-      <DynamicTable
-        ref="dynamicTableRef"
-        header-title="用户管理"
-        show-index
-        titleTooltip="请不要随意删除用户，避免到影响其他用户的使用。"
-        :data-request="loadTableData"
-        :columns="columns"
-        :scroll="{ x: 2000 }"
-        :row-selection="rowSelection"
-      >
-        <template #title v-if="isCheckRows">
-          <Alert class="w-full" type="info" show-icon>
-            <template #message>
-              已选 {{ isCheckRows }} 项
-              <a-button type="link" @click="rowSelection.selectedRowKeys = []">取消选择</a-button>
-            </template>
-          </Alert>
-        </template>
-        <template #toolbar>
-          <a-button type="primary" :disabled="!$auth('sys.user.add')" @click="openUserModal({})">
-            <PlusOutlined /> 新增
-          </a-button>
-          <a-button
-            type="success"
-            :disabled="!isCheckRows || !$auth('sys.dept.transfer')"
-            @click="openTransferUserModal"
-          >
-            <SwapOutlined /> 转移
-          </a-button>
-          <a-button
-            type="danger"
-            :disabled="!isCheckRows || !$auth('sys.user.delete')"
-            @click="delRowConfirm(rowSelection.selectedRowKeys)"
-          >
-            <DeleteOutlined /> 删除
-          </a-button>
-        </template>
-      </DynamicTable>
-    </template>
-  </SplitPanel>
+  <BaseContainer>
+    <SplitPanel>
+      <template #left-content>
+        <div class="flex justify-between">
+          <div>组织架构</div>
+          <Space>
+            <Tooltip v-if="$auth('sys.dept.add')" placement="top">
+              <template #title>新增部门 </template>
+              <PlusOutlined @click="openDeptModal({})" />
+            </Tooltip>
+            <Tooltip placement="top">
+              <template #title>刷新 </template>
+              <SyncOutlined :spin="deptListLoading" @click="fetchDeptList" />
+            </Tooltip>
+          </Space>
+        </div>
+        <Tree
+          v-model:expandedKeys="state.expandedKeys"
+          autoExpandParent
+          :tree-data="state.deptTree"
+          @select="onTreeSelect"
+        >
+          <template #title="{ key, title, formData }">
+            <Dropdown :trigger="['contextmenu']">
+              <span>{{ title }}</span>
+              <template #overlay>
+                <Menu>
+                  <Menu.Item
+                    key="1"
+                    :disabled="!$auth('sys.dept.update')"
+                    @click="openDeptModal(formData)"
+                  >
+                    编辑 <EditOutlined />
+                  </Menu.Item>
+                  <Menu.Item key="2" :disabled="!$auth('sys.dept.delete')" @click="delDept(key)">
+                    删除 <DeleteOutlined />
+                  </Menu.Item>
+                </Menu>
+              </template>
+            </Dropdown>
+          </template>
+        </Tree>
+      </template>
+      <template #right-content>
+        <SearchTable
+          ref="dynamicTableRef"
+          header-title="用户管理"
+          show-index
+          titleTooltip="请不要随意删除用户，避免到影响其他用户的使用。"
+          :data-request="loadTableData"
+          :columns="columns"
+          :scroll="{ x: 2000 }"
+          :row-selection="rowSelection"
+        >
+          <template #toolbar>
+            <a-button type="primary" :disabled="!$auth('sys.user.add')" @click="openUserModal({})">
+              <PlusOutlined /> 新增
+            </a-button>
+            <a-button
+              type="success"
+              :disabled="!isCheckRows || !$auth('sys.dept.transfer')"
+              @click="openTransferUserModal"
+            >
+              <SwapOutlined /> 转移
+            </a-button>
+            <a-button
+              type="danger"
+              :disabled="!isCheckRows || !$auth('sys.user.delete')"
+              @click="delRowConfirm(rowSelection.selectedRowKeys)"
+            >
+              <DeleteOutlined /> 删除
+            </a-button>
+          </template>
+        </SearchTable>
+      </template>
+    </SplitPanel>
+  </BaseContainer>
 </template>
 
 <script lang="tsx">
@@ -90,7 +84,7 @@
 
 <script setup lang="tsx">
   import { ref, reactive, computed } from 'vue';
-  import { Tree, Dropdown, Space, Tooltip, Modal, Alert, Menu } from 'ant-design-vue';
+  import { Tree, Dropdown, Space, Tooltip, Modal, Menu } from 'ant-design-vue';
   import {
     SyncOutlined,
     PlusOutlined,
@@ -100,7 +94,6 @@
     SwapOutlined,
   } from '@ant-design/icons-vue';
   import { SplitPanel } from '@/components/basic/split-panel';
-  import { DynamicTable } from '@/components/core/dynamic-table';
   import type { LoadDataParams, DynamicTableInstance } from '@/components/core/dynamic-table';
   import {
     deleteUsers,

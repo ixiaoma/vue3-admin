@@ -1,45 +1,27 @@
 <template>
-  <dynamic-table
-    ref="dynamicTableRef"
-    size="small"
-    bordered
-    :data-request="loadData"
-    :columns="columns"
-    rowKey="heroid"
-    @toggle-advanced="toggleAdvanced"
-  />
+  <TopBar>
+    <ATabs name="tabbar">
+      <ATabPane key="1" tab="Tab 1" />
+      <ATabPane key="2" tab="Tab 2" force-render />
+      <ATabPane key="3" tab="Tab 3" />
+    </ATabs>
+  </TopBar>
+
+  <BaseContainer>
+    <SearchTable
+      ref="dynamicTableRef"
+      size="small"
+      bordered
+      :data-request="loadData"
+      :columns="columns"
+      rowKey="heroid"
+      @toggle-advanced="toggleAdvanced"
+    />
+  </BaseContainer>
 </template>
 
 <script lang="ts" setup>
-  import { DynamicTable, type DynamicTableInstance } from '@/components/core/dynamic-table';
   import { columns, tableData } from './columns';
-  import { ref } from 'vue';
-
-  const dynamicTableRef = ref<DynamicTableInstance>();
-
-  // 展开搜索表单时更新英雄皮肤选项值
-  const toggleAdvanced = (e) => {
-    if (e) {
-      // 手动设置搜索表单的搜索项
-      dynamicTableRef.value?.getQueryFormRef().updateSchema([
-        {
-          field: 'price',
-          componentProps: {
-            options: [
-              {
-                label: '0-199',
-                value: '0-199',
-              },
-              {
-                label: '200-999',
-                value: '200-999',
-              },
-            ],
-          },
-        },
-      ]);
-    }
-  };
 
   const loadData = async (params) => {
     return new Promise((resolve) => {

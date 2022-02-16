@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <DynamicTable
+  <BaseContainer>
+    <SearchTable
       ref="dynamicTableRef"
       row-key="id"
       header-title="菜单管理"
@@ -17,8 +17,8 @@
           新增
         </a-button>
       </template>
-    </DynamicTable>
-  </div>
+    </SearchTable>
+  </BaseContainer>
 </template>
 
 <script lang="ts">
@@ -31,7 +31,6 @@
   import { ref } from 'vue';
   import type { TreeSelectProps } from 'ant-design-vue';
   import { getMenuList, updateMenu, createMenu, deleteMenu } from '@/api/system/menu';
-  import { DynamicTable } from '@/components/core/dynamic-table';
   import { useFormModal } from '@/hooks/useModal/useFormModal';
   import { baseColumns, type TableListItem, type TableColumnItem } from './columns';
   import { menuSchemas } from './formSchemas';

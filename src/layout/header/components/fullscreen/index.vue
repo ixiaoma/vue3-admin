@@ -8,7 +8,7 @@
 </template>
 <script lang="ts" setup>
   import { computed, unref } from 'vue';
-  import { Tooltip } from 'ant-design-vue';
+
   import { useI18n } from 'vue-i18n';
   import { useFullscreen } from '@vueuse/core';
 

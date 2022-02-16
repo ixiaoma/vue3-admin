@@ -34,7 +34,7 @@
 <script lang="tsx" setup>
   import { computed } from 'vue';
   import { useRouter, useRoute } from 'vue-router';
-  import { Layout, message, Modal, Dropdown, Menu, Space, Avatar } from 'ant-design-vue';
+  import { Layout, message, Avatar } from 'ant-design-vue';
   import {
     QuestionCircleOutlined,
     MenuFoldOutlined,
