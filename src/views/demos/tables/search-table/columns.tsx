@@ -11,6 +11,7 @@ export const tableData = Array.from({ length: 30 }).map((_, i) => ({
   price: ~~(Math.random() * 1000),
   gender: ~~(Math.random() * 2),
   status: ~~(Math.random() * 2),
+  time: '',
 }));
 
 const getClothesByGender = (gender: number) => {
@@ -50,9 +51,6 @@ export const columns: TableColumn<ListItemType>[] = [
     title: '姓名',
     align: 'center',
     dataIndex: 'name',
-    formItemProps: {
-      required: true,
-    },
   },
   {
     title: '性别',
@@ -101,6 +99,23 @@ export const columns: TableColumn<ListItemType>[] = [
       component: 'Select',
     },
     bodyCell: ({ record }) => <>{[record.price]}元</>,
+  },
+  {
+    title: '时间',
+    align: 'center',
+    dataIndex: 'time',
+    formItemProps: {
+      component: 'RangePicker',
+      componentProps: ({ formModel }) => ({
+        format: 'YYYY-MM-DD HH:mm:ss',
+        width: '100%',
+        onChange(_date, dateString) {
+          formModel['startTime'] = dateString[0];
+          formModel['endTime'] = dateString[1];
+        },
+      }),
+    },
+    hideInTable: true,
   },
   {
     title: '状态',

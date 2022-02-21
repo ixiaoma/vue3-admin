@@ -14,6 +14,7 @@
       bordered
       :data-request="loadData"
       :columns="columns"
+      :hideInQuery="hideInQuery"
       rowKey="heroid"
       @toggle-advanced="toggleAdvanced"
     />
@@ -33,6 +34,7 @@
       }, 500);
     });
   };
+  const hideInQuery = ['time'];
 </script>
 
 <style lang="less" scoped></style>

@@ -1,6 +1,6 @@
 <template>
   <div class="tabs-view">
-    <Tabs
+    <ATabs
       :active-key="activeKey"
       hide-add
       type="editable-card"
@@ -9,16 +9,16 @@
       @change="changePage"
       @edit="editTabItem"
     >
-      <Tabs.TabPane v-for="pageItem in tabsList" :key="pageItem.fullPath">
+      <ATabs.TabPane v-for="pageItem in tabsList" :key="pageItem.fullPath">
         <template #tab>
-          <Dropdown :trigger="['contextmenu']">
+          <ADropdown :trigger="['contextmenu']">
             <div style="display: inline-block">
               <TitleI18n :title="pageItem.meta?.title" />
             </div>
-          </Dropdown>
+          </ADropdown>
         </template>
-      </Tabs.TabPane>
-    </Tabs>
+      </ATabs.TabPane>
+    </ATabs>
   </div>
 </template>
 

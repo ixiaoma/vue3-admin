@@ -27,6 +27,11 @@ export const props = {
       ) => Promise<API.TableListResult>
     >,
   },
+  /** 查询条件忽略参数 */
+  hideInQuery: {
+    type: Array as PropType<string[]>,
+    default: () => [],
+  },
   /** 是否显示索引号 */
   showIndex: {
     type: Boolean as PropType<boolean>,

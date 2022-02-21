@@ -1,14 +1,14 @@
 <template>
   <Layout.Header class="layout-header">
-    <Space :size="20">
+    <ASpace :size="20">
       <span class="menu-fold" @click="() => emit('update:collapsed', !collapsed)">
         <component :is="collapsed ? MenuUnfoldOutlined : MenuFoldOutlined" />
       </span>
-    </Space>
+    </ASpace>
     <TabsView />
-    <Space :size="20">
+    <ASpace :size="20">
       <FullScreen />
-      <Dropdown>
+      <ADropdown>
         <Avatar :src="userInfo.headImg" :alt="userInfo.name">{{ userInfo.name }}</Avatar>
         <template #overlay>
           <Menu>
@@ -26,15 +26,15 @@
             </Menu.Item>
           </Menu>
         </template>
-      </Dropdown>
-    </Space>
+      </ADropdown>
+    </ASpace>
   </Layout.Header>
 </template>
 
 <script lang="tsx" setup>
   import { computed } from 'vue';
   import { useRouter, useRoute } from 'vue-router';
-  import { Layout, message, Avatar } from 'ant-design-vue';
+  import { Layout, message, Avatar, Menu } from 'ant-design-vue';
   import {
     QuestionCircleOutlined,
     MenuFoldOutlined,

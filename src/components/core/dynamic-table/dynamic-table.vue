@@ -123,7 +123,17 @@
        */
       const queryTable = (params) => {
         params.page = 1;
-        fetchTableData(params);
+        let filterParams = {};
+        if (props.hideInQuery.length) {
+          for (let i in params) {
+            if (!props.hideInQuery.includes(i)) {
+              filterParams[i] = params[i];
+            }
+          }
+        } else {
+          filterParams = params;
+        }
+        fetchTableData(filterParams);
       };
 
       /**
@@ -132,6 +142,7 @@
        * @description 获取表格数据
        */
       const fetchTableData = async (params = {}) => {
+        console.log(params);
         // 如果用户没有提供dataSource并且dataRequest是一个函数，那就进行接口请求
         if (
           Object.is(props.dataSource, undefined) &&

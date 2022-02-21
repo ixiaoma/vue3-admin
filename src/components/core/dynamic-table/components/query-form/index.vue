@@ -124,7 +124,7 @@
       };
       const query = async () => {
         const formModel = await dynamicFormRef.value?.validate();
-        console.log('queryParams', formModel);
+        console.log('queryPara;ms', formModel);
 
         emit('query', formModel);
       };
