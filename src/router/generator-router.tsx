@@ -1,6 +1,6 @@
 import { Result } from 'ant-design-vue';
 import { type RouteRecordRaw } from 'vue-router';
-import RouterView from '@/layout/routerView/index.vue';
+import RouterView from '@/layout/router-view/index.vue';
 import { isUrl } from '@/utils/is';
 import { uniqueSlash } from '@/utils/urlUtils';
 import { constantRouterComponents } from '@/router/asyncModules';

@@ -8,11 +8,11 @@
       style="margin-bottom: 12px"
     />
     <a-card>
-      <schema-form ref="dynamicForm" :form-schema="formSchema">
+      <SchemaForm ref="dynamicForm" :form-schema="formSchema">
         <template #operate-button>
           <a-button type="primary" @click="confirm"> 确定 </a-button>
         </template>
-      </schema-form>
+      </SchemaForm>
     </a-card>
   </div>
 </template>
@@ -26,7 +26,7 @@
 <script lang="ts" setup>
   import { ref } from 'vue';
   import { Alert, message } from 'ant-design-vue';
-  import { SchemaForm } from '@/components/core/schema-form';
+  import { SchemaForm } from '@/components/core/SchemaForm';
   import { schemas } from './form-schema';
 
   /**

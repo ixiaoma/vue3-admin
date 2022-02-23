@@ -38,7 +38,7 @@
   //   MinusOutlined,
   // } from '@ant-design/icons-vue';
   // import { REDIRECT_NAME } from '@/router/constant';
-  import { TitleI18n } from '@/components/basic/title-i18n';
+  import { TitleI18n } from '@/components/basic/TitleI18n';
 
   type RouteItem = Omit<RouteLocation, 'matched' | 'redirectedFrom'>;
 

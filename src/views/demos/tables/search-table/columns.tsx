@@ -1,4 +1,4 @@
-import type { TableColumn } from '@/components/core/dynamic-table';
+import type { TableColumn } from '@/components/core/SearchTable';
 import { Tag } from 'ant-design-vue';
 
 const names = ['王路飞', '王大蛇', '李白', '刺客伍六七'];

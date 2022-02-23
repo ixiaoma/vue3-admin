@@ -12,7 +12,7 @@
 </script>
 
 <script setup lang="tsx">
-  import { DynamicTable, TableColumn } from '@/components/core/dynamic-table';
+  import { DynamicTable, TableColumn } from '@/components/core/SearchTable';
   import { getTaskLogList } from '@/api/system/log';
   import { Tag } from 'ant-design-vue';
 

@@ -1,14 +1,14 @@
 <template>
-  <TopBar>
-    <ATabs name="tabbar">
-      <ATabPane key="1" tab="Tab 1" />
-      <ATabPane key="2" tab="Tab 2" force-render />
-      <ATabPane key="3" tab="Tab 3" />
-    </ATabs>
-  </TopBar>
+  <top-bar>
+    <a-tabs name="tabbar">
+      <a-tab-pane key="1" tab="Tab 1" />
+      <a-tab-pane key="2" tab="Tab 2" force-render />
+      <a-tab-pane key="3" tab="Tab 3" />
+    </a-tabs>
+  </top-bar>
 
-  <BaseContainer>
-    <SearchTable
+  <base-container>
+    <search-table
       ref="dynamicTableRef"
       size="small"
       bordered
@@ -18,7 +18,7 @@
       rowKey="heroid"
       @toggle-advanced="toggleAdvanced"
     />
-  </BaseContainer>
+  </base-container>
 </template>
 
 <script lang="ts" setup>

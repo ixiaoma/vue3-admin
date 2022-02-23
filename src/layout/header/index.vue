@@ -44,7 +44,7 @@
   import { FullScreen, TabsView } from './components';
   import { useUserStore } from '@/store/modules/user';
   import { LOGIN_NAME } from '@/router/constant';
-  // import { TitleI18n } from '@/components/basic/title-i18n';
+  // import { TitleI18n } from '@/components/basic/TitleI18n';
 
   defineProps({
     collapsed: {

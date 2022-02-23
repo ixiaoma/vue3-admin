@@ -54,7 +54,6 @@
   import { UserOutlined, LockOutlined, SafetyOutlined } from '@ant-design/icons-vue';
   import { useUserStore } from '@/store/modules/user';
   import { getImageCaptcha } from '@/api/login';
-  import { SvgIcon } from '@/components/basic/svg-icon';
   import { useRoute, useRouter } from 'vue-router';
 
   const state = reactive({

@@ -1,6 +1,6 @@
 import { type RouteRecordRaw } from 'vue-router';
 import { PAGE_NOT_FOUND_NAME } from '@/router/constant';
-import RouterView from '@/layout/routerView/index.vue';
+import RouterView from '@/layout/router-view/index.vue';
 
 const moduleName = 'error';
 

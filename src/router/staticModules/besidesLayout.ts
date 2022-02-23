@@ -1,4 +1,4 @@
-import RouterView from '@/layout/routerView/index.vue';
+import RouterView from '@/layout/router-view/index.vue';
 import { type RouteRecordRaw } from 'vue-router';
 import { REDIRECT_NAME } from '@/router/constant';
 import router from '@/router';

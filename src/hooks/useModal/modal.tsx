@@ -1,4 +1,4 @@
-import { DraggableModal } from '@/components/core/draggable-modal';
+import { DraggableModal } from '@/components/core/DraggableModal';
 import { defineComponent, reactive, watchEffect, watch, ref } from 'vue';
 import type { HookModalProps } from './types';
 import { isFunction } from '@/utils/is';

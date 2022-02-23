@@ -86,7 +86,7 @@
   import { reactive, computed, toRefs, onMounted, onBeforeUnmount } from 'vue';
   import { formatSizeUnits } from '@/utils';
   import { getServeStat } from '@/api/system/serve';
-  import Progress from '@/components/basic/progress/index.vue';
+  import Progress from '@/components/basic/Progress/index.vue';
 
   let intervalId = -1;
 

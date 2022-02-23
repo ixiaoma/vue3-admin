@@ -1,4 +1,4 @@
-import type { TableColumn } from '@/components/core/dynamic-table';
+import type { TableColumn } from '@/components/core/SearchTable';
 import { Badge, Tag } from 'ant-design-vue';
 
 export type TableListItem = API.SysTaskListItem;

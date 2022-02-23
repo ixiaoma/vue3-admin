@@ -26,7 +26,7 @@
 <script setup lang="ts">
   import { reactive } from 'vue';
   import { Alert, Space } from 'ant-design-vue';
-  import { DraggableModal } from '@/components/core/draggable-modal';
+  import { DraggableModal } from '@/components/core/DraggableModal';
   import { useModal } from '@/hooks/useModal/';
   /**
    * @description 扩展ant-design-vue模态框功能

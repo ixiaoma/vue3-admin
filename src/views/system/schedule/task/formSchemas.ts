@@ -1,4 +1,4 @@
-import type { FormItemSchema } from '@/components/core/schema-form/types/form';
+import type { FormItemSchema } from '@/components/core/SchemaForm/types/form';
 
 export const taskSchemas: FormItemSchema<API.SysTaskAddParams>[] = [
   {

@@ -37,8 +37,8 @@
   import { type PropType, computed } from 'vue';
   import { Menu } from 'ant-design-vue';
   import type { RouteRecordRaw } from 'vue-router';
-  import { IconFont } from '@/components/basic/iconfont';
-  import { TitleI18n } from '@/components/basic/title-i18n';
+  import { IconFont } from '@/components/basic/Iconfont';
+  import { TitleI18n } from '@/components/basic/TitleI18n';
 
   const props = defineProps({
     menuInfo: {

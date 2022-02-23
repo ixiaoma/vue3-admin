@@ -1,6 +1,6 @@
 import { shallowRef } from 'vue';
-import type { FormItemSchema } from '@/components/core/schema-form/types/form';
-import IconsSelect from '@/components/basic/icons-select/index.vue';
+import type { FormItemSchema } from '@/components/core/SchemaForm/types/form';
+import IconsSelect from '@/components/basic/IconsSelect/index.vue';
 import MultipleCascader from './components/multiple-cascader/index.vue';
 import { constantRouterComponents } from '@/router/asyncModules';
 
