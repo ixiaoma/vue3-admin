@@ -1,7 +1,7 @@
 import { IS_LOCKSCREEN } from '@/enums/cacheEnum';
 import { defineStore } from 'pinia';
 import { store } from '@/store';
-import { Storage } from '@/utils/Storage';
+import { Storage } from '@/utils/storage';
 
 // 长时间不操作默认锁屏时间
 const initTime = 60 * 60;

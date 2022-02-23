@@ -1,5 +1,5 @@
 <template>
-  <BaseContainer>
+  <base-container>
     <SplitPanel>
       <template #left-content>
         <div class="flex justify-between">
@@ -43,7 +43,7 @@
         </Tree>
       </template>
       <template #right-content>
-        <SearchTable
+        <search-table
           ref="dynamicTableRef"
           header-title="用户管理"
           show-index
@@ -72,10 +72,10 @@
               <DeleteOutlined /> 删除
             </a-button>
           </template>
-        </SearchTable>
+        </search-table>
       </template>
     </SplitPanel>
-  </BaseContainer>
+  </base-container>
 </template>
 
 <script lang="tsx">

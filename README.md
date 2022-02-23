@@ -37,6 +37,16 @@ yarn build
 
 > 使用了 Vue3.x 全家桶、ant-design-vue3.x 和 typescript4.x，实践 vue3.x 的新特性以及玩法，不得不说 vue3.x 的 Composition API 相比于 vue2.x 的 Options API 灵活很多，让我们可以灵活地组合组件逻辑，我们可以很轻松的使用 hooks 的形式去代替以前 mixins 等的写法。更多 hooks 可以参考[vueuse](https://vueuse.org/functions.html)
 
+## 代码规范
+
+- /src/components -- 公共组件文件名称大驼峰 (SearchTable)
+
+- 除公共组件之外文件夹名或组件名称统一使用小写字母或者小写字母与‘-’组合（module-file）
+
+- src/api | /src/hooks | /src/router | /src/store | /src/utils -- 系统方法使用小驼峰 (useHooks)
+
+- 元素名称统一用小写字母'-'组合 <a-form> <search-table>
+
 ## Git 贡献提交规范
 
 - 参考 [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) 规范 ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))

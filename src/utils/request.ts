@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { message as $message } from 'ant-design-vue';
 import { ACCESS_TOKEN_KEY } from '@/enums/cacheEnum';
-import { Storage } from '@/utils/Storage';
+import { Storage } from '@/utils/storage';
 import { useUserStore } from '@/store/modules/user';
 // import {ExclamationCircleOutlined} from '@ant-design/icons'
 

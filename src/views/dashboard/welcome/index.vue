@@ -24,7 +24,7 @@
 <script lang="ts" setup>
   import { ref, watchEffect } from 'vue';
   import { Descriptions, Badge } from 'ant-design-vue';
-  import BrowserType from '@/utils/browser-type';
+  import BrowserType from '@/utils/browserType';
   import { useBattery } from '@/hooks/useBattery';
   import { useOnline } from '@/hooks/useOnline';
   import { useUserStore } from '@/store/modules/user';

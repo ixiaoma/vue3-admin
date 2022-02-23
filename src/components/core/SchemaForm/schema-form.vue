@@ -39,7 +39,7 @@
   import { formProps } from 'ant-design-vue/es/form';
   import { isNullOrUnDef, isObject, isArray, isFunction, isBoolean, isString } from '@/utils/is';
   import { deepMerge } from '@/utils/';
-  import SchemaFormItem from './SchemaFormItem.vue';
+  import SchemaFormItem from './schema-form-item.vue';
   import type { FormItemSchema, FormSchema, FormActionType } from './types/form';
   import { NamePath } from 'ant-design-vue/es/form/interface';
   import { uniqBy, cloneDeep } from 'lodash-es';

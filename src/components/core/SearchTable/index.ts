@@ -1,5 +1,5 @@
 import { Ref } from 'vue';
-import DynamicTable from './SearchTable.vue';
+import DynamicTable from './search-table.vue';
 import TableQueryHeader from './components/query-form/index.vue';
 export { DynamicTable, TableQueryHeader };
 

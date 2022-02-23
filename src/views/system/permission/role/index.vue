@@ -1,6 +1,6 @@
 <template>
-  <BaseContainer>
-    <SearchTable
+  <base-container>
+    <search-table
       ref="dynamicTableRef"
       row-key="id"
       :data-request="getRoleListByPage"
@@ -13,8 +13,8 @@
           新增
         </a-button>
       </template>
-    </SearchTable>
-  </BaseContainer>
+    </search-table>
+  </base-container>
 </template>
 
 <script lang="ts">

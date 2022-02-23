@@ -1,8 +1,7 @@
 export * from './types/form';
 export * from './types/formItem';
 
-// export { default as SchemaForm } from './SchemaForm.vue'
-import SchemaForm from './SchemaForm.vue';
+import SchemaForm from './schema-form.vue';
 
 export { SchemaForm };
 

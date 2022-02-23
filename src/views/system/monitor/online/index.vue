@@ -17,23 +17,8 @@
   import { DynamicTable, TableColumn, DynamicTableInstance } from '@/components/core/SearchTable';
   import { getOnlineList, kickUser } from '@/api/system/online';
   import { Tag } from 'ant-design-vue';
-  import { useSocket } from '@/core/socket/useSocket';
 
   const dynamicTableRef = ref<DynamicTableInstance>();
-
-  useSocket({
-    connect() {
-      // connect auto refresh
-      dynamicTableRef.value?.refreshTable();
-    },
-    online() {
-      // online event auto refresh
-      dynamicTableRef.value?.refreshTable();
-    },
-    offline() {
-      dynamicTableRef.value?.refreshTable();
-    },
-  });
 
   type TableListItem = API.OnlineUserListItem;
 

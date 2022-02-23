@@ -2,7 +2,7 @@ import type { LocaleType } from '@/locales/config';
 import { defineStore } from 'pinia';
 import { store } from '@/store';
 import { LOCALE_KEY } from '@/enums/cacheEnum';
-import { Storage } from '@/utils/Storage';
+import { Storage } from '@/utils/storage';
 
 interface LocaleState {
   locale: LocaleType;

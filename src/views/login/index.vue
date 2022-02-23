@@ -29,7 +29,7 @@
           :maxlength="4"
           size="large"
         >
-          <template #prefix><SafetyOutlined /></template>
+          <template #prefix><safety-outlined /></template>
           <template #suffix>
             <img
               :src="state.captcha"

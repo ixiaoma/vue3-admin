@@ -27,7 +27,7 @@
   import { defineComponent, reactive, toRefs, computed, ref, nextTick } from 'vue';
   import { CaretDownOutlined } from '@ant-design/icons-vue';
   import type { TableColumn } from '../../typing';
-  import SchemaForm from '@/components/core/SchemaForm/SchemaForm.vue';
+  import SchemaForm from '@/components/core/SchemaForm/schema-form.vue';
   import type { FormItemSchema, FormProps } from '@/components/core/SchemaForm/types/form';
 
   export default defineComponent({

@@ -25,7 +25,7 @@
 <script setup lang="ts">
   import { computed, watch } from 'vue';
   import { useRoute, useRouter, RouteLocation } from 'vue-router';
-  import { Storage } from '@/utils/Storage';
+  import { Storage } from '@/utils/storage';
   import { TABS_ROUTES } from '@/enums/cacheEnum';
   import { useTabsViewStore, blackList } from '@/store/modules/tabsView';
 

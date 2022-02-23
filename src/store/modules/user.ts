@@ -3,10 +3,9 @@ import { defineStore } from 'pinia';
 import { store } from '@/store';
 import { login } from '@/api/login';
 import { ACCESS_TOKEN_KEY } from '@/enums/cacheEnum';
-import { Storage } from '@/utils/Storage';
+import { Storage } from '@/utils/storage';
 import { logout, getInfo, permmenu } from '@/api/account';
 import { generatorDynamicRouter } from '@/router/generator-router';
-import { useWsStore } from './ws';
 import { resetRouter } from '@/router';
 
 interface UserState {
@@ -71,7 +70,6 @@ export const useUserStore = defineStore({
     // 登录成功之后, 获取用户信息以及生成权限路由
     async afterLogin() {
       try {
-        const wsStore = useWsStore();
         const [userInfo, { perms, menus }] = await Promise.all([getInfo(), permmenu()]);
         this.perms = perms;
         this.name = userInfo.name;
@@ -80,7 +78,6 @@ export const useUserStore = defineStore({
         // 生成路由
         const generatorResult = generatorDynamicRouter(menus);
         this.menus = generatorResult.menus.filter((item) => !item.meta?.hideInMenu);
-        wsStore.initSocket();
 
         return { menus, perms, userInfo };
       } catch (error) {
@@ -90,8 +87,6 @@ export const useUserStore = defineStore({
     // 登出
     async logout() {
       await logout();
-      const wsStore = useWsStore();
-      wsStore.closeSocket();
       this.resetToken();
       resetRouter();
     },

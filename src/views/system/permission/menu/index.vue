@@ -1,6 +1,6 @@
 <template>
-  <BaseContainer>
-    <SearchTable
+  <base-container>
+    <search-table
       ref="dynamicTableRef"
       row-key="id"
       header-title="菜单管理"
@@ -17,8 +17,8 @@
           新增
         </a-button>
       </template>
-    </SearchTable>
-  </BaseContainer>
+    </search-table>
+  </base-container>
 </template>
 
 <script lang="ts">
