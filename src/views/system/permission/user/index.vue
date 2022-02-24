@@ -1,46 +1,46 @@
 <template>
   <base-container>
-    <SplitPanel>
+    <split-panel>
       <template #left-content>
         <div class="flex justify-between">
           <div>组织架构</div>
-          <Space>
-            <Tooltip v-if="$auth('sys.dept.add')" placement="top">
+          <a-space>
+            <a-tooltip v-if="$auth('sys.dept.add')" placement="top">
               <template #title>新增部门 </template>
-              <PlusOutlined @click="openDeptModal({})" />
-            </Tooltip>
-            <Tooltip placement="top">
+              <plus-outlined @click="openDeptModal({})" />
+            </a-tooltip>
+            <a-tooltip placement="top">
               <template #title>刷新 </template>
-              <SyncOutlined :spin="deptListLoading" @click="fetchDeptList" />
-            </Tooltip>
-          </Space>
+              <sync-outlined :spin="deptListLoading" @click="fetchDeptList" />
+            </a-tooltip>
+          </a-space>
         </div>
-        <Tree
+        <a-tree
           v-model:expandedKeys="state.expandedKeys"
           autoExpandParent
           :tree-data="state.deptTree"
           @select="onTreeSelect"
         >
           <template #title="{ key, title, formData }">
-            <Dropdown :trigger="['contextmenu']">
+            <a-dropdown :trigger="['contextmenu']">
               <span>{{ title }}</span>
               <template #overlay>
-                <Menu>
-                  <Menu.Item
+                <a-menu>
+                  <a-menu-item
                     key="1"
                     :disabled="!$auth('sys.dept.update')"
                     @click="openDeptModal(formData)"
                   >
-                    编辑 <EditOutlined />
-                  </Menu.Item>
-                  <Menu.Item key="2" :disabled="!$auth('sys.dept.delete')" @click="delDept(key)">
-                    删除 <DeleteOutlined />
-                  </Menu.Item>
-                </Menu>
+                    编辑 <edit-outlined />
+                  </a-menu-item>
+                  <a-menu-item key="2" :disabled="!$auth('sys.dept.delete')" @click="delDept(key)">
+                    删除 <delete-outlined />
+                  </a-menu-item>
+                </a-menu>
               </template>
-            </Dropdown>
+            </a-dropdown>
           </template>
-        </Tree>
+        </a-tree>
       </template>
       <template #right-content>
         <search-table
@@ -55,26 +55,26 @@
         >
           <template #toolbar>
             <a-button type="primary" :disabled="!$auth('sys.user.add')" @click="openUserModal({})">
-              <PlusOutlined /> 新增
+              <plus-outlined /> 新增
             </a-button>
             <a-button
               type="success"
               :disabled="!isCheckRows || !$auth('sys.dept.transfer')"
               @click="openTransferUserModal"
             >
-              <SwapOutlined /> 转移
+              <swap-outlined /> 转移
             </a-button>
             <a-button
               type="danger"
               :disabled="!isCheckRows || !$auth('sys.user.delete')"
               @click="delRowConfirm(rowSelection.selectedRowKeys)"
             >
-              <DeleteOutlined /> 删除
+              <delete-outlined /> 删除
             </a-button>
           </template>
         </search-table>
       </template>
-    </SplitPanel>
+    </split-panel>
   </base-container>
 </template>
 
@@ -84,7 +84,7 @@
 
 <script setup lang="tsx">
   import { ref, reactive, computed } from 'vue';
-  import { Tree, Dropdown, Space, Tooltip, Modal, Menu } from 'ant-design-vue';
+  import { Modal } from 'ant-design-vue';
   import {
     SyncOutlined,
     PlusOutlined,

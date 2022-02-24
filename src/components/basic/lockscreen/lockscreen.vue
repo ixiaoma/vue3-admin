@@ -26,11 +26,11 @@
     </template>
     <template v-if="state.isShowLogin">
       <div class="login-box">
-        <Avatar :size="128">
+        <a-avatar :size="128">
           <template #icon>
             <user-outlined />
           </template>
-        </Avatar>
+        </a-avatar>
         <div class="username">{{ state.loginForm.username }}</div>
         <a-input-search
           v-model:value="state.loginForm.password"
@@ -41,7 +41,7 @@
           @search="onLogin"
         >
           <template #enterButton>
-            <LoadingOutlined v-if="state.loginLoading" />
+            <loading-outlined v-if="state.loginLoading" />
             <arrow-right-outlined v-else />
           </template>
         </a-input-search>
@@ -55,9 +55,9 @@
       </div>
       <div class="computer-status">
         <span :class="{ offline: !online }" class="network">
-          <WifiOutlined class="network" />
+          <wifi-outlined class="network" />
         </span>
-        <ApiOutlined />
+        <api-outlined />
       </div>
     </template>
   </div>
@@ -65,7 +65,7 @@
 
 <script setup lang="ts">
   import { reactive } from 'vue';
-  import { Avatar, message } from 'ant-design-vue';
+  import { message } from 'ant-design-vue';
   import {
     LockOutlined,
     LoadingOutlined,
