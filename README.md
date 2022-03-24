@@ -7,7 +7,7 @@
 - 获取项目代码
 
 ```bash
-git clone https://github.com/buqiyuan/vue3-antd-admin
+git clone 
 ```
 
 - 安装依赖
